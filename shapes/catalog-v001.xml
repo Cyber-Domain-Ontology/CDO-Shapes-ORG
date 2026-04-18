@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="public">
-    <uri id="User Entered Import Resolution" uri="../dependencies/UCO/ontology/owl/owl.ttl" name="https://ontology.unifiedcyberontology.org/owl"/>
-    <uri id="User Entered Import Resolution" uri="../dependencies/UCO/ontology/owl/owl.ttl" name="https://ontology.unifiedcyberontology.org/owl/1.4.0"/>
-    <uri id="User Entered Import Resolution" uri="../dependencies/formatted-example.ttl" name="http://example.org/ontology/example/0.0.1"/>
-    <uri id="User Entered Import Resolution" uri="sh-example.ttl" name="http://example.org/shapes/sh-example"/>
+    <uri id="User Entered Import Resolution" uri="../dependencies/CDO-Shapes-FOAF/dependencies/CDO-Shapes-OWL/shapes/sh-owl.ttl" name="https://shapes.cyberdomainontology.org/sh-owl"/>
+    <uri id="User Entered Import Resolution" uri="../dependencies/CDO-Shapes-FOAF/dependencies/CDO-Shapes-OWL/shapes/sh-owl.ttl" name="https://shapes.cyberdomainontology.org/sh-owl/1.4.0"/>
+    <uri id="User Entered Import Resolution" uri="../dependencies/CDO-Shapes-FOAF/dependencies/formatted-foaf.ttl" name="http://xmlns.com/foaf/0.1/"/>
+    <uri id="User Entered Import Resolution" uri="../dependencies/CDO-Shapes-FOAF/shapes/sh-foaf.ttl" name="http://example.org/shapes/sh-foaf"/>
+    <uri id="User Entered Import Resolution" uri="../dependencies/formatted-org.ttl" name="http://www.w3.org/ns/org#"/>
+    <uri id="User Entered Import Resolution" uri="sh-org.ttl" name="http://example.org/shapes/sh-org"/>
 </catalog>

@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="public">
-    <uri id="User Entered Import Resolution" uri="../dependencies/formatted-example.ttl" name="http://example.org/ontology/example"/>
+    <uri id="User Entered Import Resolution" uri="../dependencies/CDO-Shapes-FOAF/dependencies/formatted-foaf.ttl" name="http://xmlns.com/foaf/0.1/"/>
+    <uri id="User Entered Import Resolution" uri="../dependencies/formatted-org.ttl" name="http://www.w3.org/ns/org#"/>
 </catalog>

@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="public">
-    <uri id="User Entered Import Resolution" uri="formatted-example.ttl" name="http://example.org/ontology/example"/>
+    <uri id="User Entered Import Resolution" uri="formatted-org.ttl" name="http://www.w3.org/ns/org#"/>
 </catalog>

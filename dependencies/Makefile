@@ -18,9 +18,9 @@ SHELL := /bin/bash
 
 top_srcdir := $(shell cd .. ; pwd)
 
-uco_srcdir := $(top_srcdir)/dependencies/UCO
+sh_owl_srcdir := $(top_srcdir)/dependencies/CDO-Shapes-FOAF/dependencies/CDO-Shapes-OWL
 
-RDF_TOOLKIT_JAR := $(uco_srcdir)/lib/rdf-toolkit.jar
+RDF_TOOLKIT_JAR := $(sh_owl_srcdir)/lib/rdf-toolkit.jar
 
 # TODO: This variable lists files for Make to generate and delete on
 # 'make clean' calls.  This variable should be adapted to list each file
@@ -28,7 +28,7 @@ RDF_TOOLKIT_JAR := $(uco_srcdir)/lib/rdf-toolkit.jar
 # Note that to support the catalog-v001.xml preconditions, this list
 # must only be files in this directory.
 normalized_ttls := \
-  formatted-example.ttl
+  formatted-org.ttl
 
 all: \
   catalog-v001.xml
@@ -62,20 +62,16 @@ clean:
 	  $(normalized_ttls) \
 	  catalog-v001.xml
 
-# TODO: Adapt this recipe to normalize a submodule's file, or downloaded
-# file, in the same manner as CDO ontologies are syntax-normalized.
-formatted-example.ttl: \
-  example/example.owl \
-  $(RDF_TOOLKIT_JAR) \
-  $(top_srcdir)/.venv.done.log
-	source $(top_srcdir)/venv/bin/activate \
-	  && pyshacl \
-	    --shacl UCO/ontology/owl/owl.ttl \
-	    $<
+formatted-org.ttl:
+	test -r $(RDF_TOOLKIT_JAR)
+	wget \
+	  --output-document=__$@ \
+	  http://www.w3.org/ns/org
 	java -jar $(RDF_TOOLKIT_JAR) \
 	  --inline-blank-nodes \
-	  --source $< \
-	  --source-format rdf-xml \
+	  --source __$@ \
+	  --source-format turtle \
 	  --target _$@ \
 	  --target-format turtle
+	rm __$@
 	mv _$@ $@

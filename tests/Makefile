@@ -18,7 +18,7 @@ SHELL := /bin/bash
 
 top_srcdir := $(shell cd .. ; pwd)
 
-uco_srcdir := $(top_srcdir)/dependencies/UCO
+sh_owl_srcdir := $(top_srcdir)/dependencies/CDO-Shapes-FOAF/dependencies/CDO-Shapes-OWL
 
 all: \
   generated-exemplars-expanded.ttl
@@ -84,7 +84,7 @@ generated-monolithic.ttl: \
   $(top_srcdir)/.venv.done.log \
   $(top_srcdir)/ontology/generated-ontology.ttl \
   $(top_srcdir)/shapes/generated-shapes.ttl \
-  $(uco_srcdir)/ontology/owl/owl.ttl
+  $(sh_owl_srcdir)/shapes/sh-owl.ttl
 	source $(top_srcdir)/venv/bin/activate \
 	  && rdfpipe \
 	    --output-format turtle \
@@ -93,6 +93,6 @@ generated-monolithic.ttl: \
 	    > _$@
 	source $(top_srcdir)/venv/bin/activate \
 	  && pyshacl \
-	    --shacl $(uco_srcdir)/ontology/owl/owl.ttl \
+	    --shacl $(sh_owl_srcdir)/shapes/sh-owl.ttl \
 	    _$@
 	mv _$@ $@

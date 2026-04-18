@@ -18,7 +18,9 @@ SHELL := /bin/bash
 
 top_srcdir := $(shell cd .. ; pwd)
 
-uco_srcdir := $(top_srcdir)/dependencies/UCO
+sh_owl_srcdir := $(top_srcdir)/dependencies/CDO-Shapes-FOAF/dependencies/CDO-Shapes-OWL
+
+uco_srcdir := $(top_srcdir)/dependencies/CDO-Shapes-FOAF/dependencies/UCO
 
 # This list is all of the graph files that contain shapes graphs linked
 # by owl:imports, plus the UCO OWL DL shapes.  The UCO OWL DL shapes are
@@ -26,7 +28,8 @@ uco_srcdir := $(top_srcdir)/dependencies/UCO
 # shapes or removing the dependency.  Non-shapes graphs are delegated to
 # ../ontology/generated-dependencies.ttl.
 generated_dependencies_ttls := \
-  $(uco_srcdir)/ontology/owl/owl.ttl
+  $(top_srcdir)/dependencies/CDO-Shapes-FOAF/shapes/sh-foaf.ttl \
+  $(sh_owl_srcdir)/shapes/sh-owl.ttl
 
 ttl_basenames := $(wildcard sh-*.ttl)
 
@@ -43,12 +46,10 @@ catalog-v001.xml: \
   $(top_srcdir)/etc/domain_directories.tsv \
   $(top_srcdir)/etc/dependency_files.tsv \
   $(top_srcdir)/src/create-catalog-v001.xml.py \
-  $(uco_srcdir)/ontology/uco/master/catalog-v001.xml \
   generated-shapes.ttl
 	rm -f _$@
 	source $(top_srcdir)/venv/bin/activate \
 	  && python3 $(top_srcdir)/src/create-catalog-v001.xml.py \
-	    --catalog-xml $(uco_srcdir)/ontology/uco/master/catalog-v001.xml \
 	    _$@ \
 	    $(top_srcdir)/etc/domain_directories.tsv \
 	    $(top_srcdir)/etc/dependency_files.tsv \

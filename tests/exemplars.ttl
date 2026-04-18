@@ -1,20 +1,36 @@
-# imports: http://example.org/shapes/sh-example
+# imports: http://example.org/shapes/sh-org
 
 @prefix drafting: <http://example.org/ontology/drafting/> .
 @prefix ex: <http://example.org/ontology/example/> .
 @prefix kb: <http://example.org/kb/> .
+@prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh-org: <http://example.org/shapes/org/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://example.org/kb>
 	a owl:Ontology ;
 	rdfs:comment "This knowledge base instantiates each of the shape-reviewed classes and properties, so SHACL shapes can be exercised for the reviewed ontology."@en ;
-	owl:imports <http://example.org/shapes/sh-example> ;
+	owl:imports <http://example.org/shapes/sh-org> ;
 	.
 
-kb:Object-76f5befa-f5e1-4b2c-8d7b-ea7cf18ecca6
-	a ex:Object ;
+kb:ChangeEvent-1a6c6f6b-3307-4ca5-a994-9b0a401ceec1
+	a org:ChangeEvent ;
+	rdfs:seeAlso sh-org:ChangeEvent-disjointWith-Organization-shape ;
+	.
+
+kb:Membership-1d9fdc4a-edfb-48bd-8c4e-dcf57f5eb3fd
+	a org:Membership ;
+	rdfs:seeAlso sh-org:Membership-disjointWith-Organization-shape ;
+	.
+
+kb:Organization-38a41943-9b82-403a-af95-bc410130d54e
+	a org:Organization ;
+	rdfs:seeAlso
+		sh-org:Organization-disjointWith-Site-shape ,
+		sh-org:Organization-shape
+		;
 	.
 

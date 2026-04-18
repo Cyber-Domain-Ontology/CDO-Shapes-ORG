@@ -55,9 +55,8 @@ all: \
 	git submodule update \
 	  --init
 	$(MAKE) \
-	  --directory dependencies/UCO \
-	  .git_submodule_init.done.log \
-	  .lib.done.log
+	  --directory dependencies/CDO-Shapes-FOAF \
+	  .git_submodule_init.done.log
 	touch $@
 
 .venv.done.log: \

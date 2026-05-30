@@ -1,5 +1,10 @@
+http://example.org/ontology/cdo-prov-o	${top_srcdir}/dependencies/CDO-Shapes-PROV-O/ontology/cdo-prov-o.ttl
 http://example.org/shapes/sh-foaf	${top_srcdir}/dependencies/CDO-Shapes-FOAF/shapes/sh-foaf.ttl
 http://example.org/shapes/sh-org	${top_srcdir}/shapes/sh-org.ttl
+http://example.org/shapes/sh-prov	${top_srcdir}/dependencies/CDO-Shapes-PROV-O/shapes/sh-prov-o.ttl
+http://example.org/shapes/sh-skos	${top_srcdir}/dependencies/CDO-Shapes-SKOS/shapes/sh-skos.ttl
+http://www.w3.org/2004/02/skos/core	${top_srcdir}/dependencies/CDO-Shapes-SKOS/dependencies/formatted-skos.ttl
 http://www.w3.org/ns/org#	${top_srcdir}/dependencies/formatted-org.ttl
+http://www.w3.org/ns/prov#	${top_srcdir}/dependencies/CDO-Shapes-PROV-O/dependencies/prov-o-dl.ttl
 http://xmlns.com/foaf/0.1/	${top_srcdir}/dependencies/CDO-Shapes-FOAF/dependencies/formatted-foaf.ttl
 https://shapes.cyberdomainontology.org/sh-owl/1.4.0	${top_srcdir}/dependencies/CDO-Shapes-FOAF/dependencies/CDO-Shapes-OWL/shapes/sh-owl.ttl

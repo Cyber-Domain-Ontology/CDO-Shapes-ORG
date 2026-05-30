@@ -1,21 +1,44 @@
 # imports: http://example.org/shapes/sh-foaf
+# imports: http://example.org/shapes/sh-prov-o
+# imports: http://example.org/shapes/sh-skos
 # imports: http://www.w3.org/ns/org#
 
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix gr: <http://purl.org/goodrelations/v1#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix sh-org: <http://example.org/shapes/org/> .
+@prefix sh-prov: <http://example.org/shapes/prov/> .
+@prefix sh-skos: <http://example.org/shapes/skos/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://example.org/shapes/sh-org>
 	a owl:Ontology ;
 	owl:imports
 		<http://example.org/shapes/sh-foaf> ,
+		<http://example.org/shapes/sh-prov-o> ,
+		<http://example.org/shapes/sh-skos> ,
 		<http://www.w3.org/ns/org#>
 		;
+	.
+
+sh-org:BusinessEntity-shape
+	a sh:NodeShape ;
+	sh:targetClass gr:BusinessEntity ;
+	.
+
+sh-org:ChangeEvent-disjointWith-Membership-shape
+	a sh:NodeShape ;
+	sh:message "org:ChangeEvent and org:Membership are disjoint classes."@en ;
+	sh:not [
+		a sh:NodeShape ;
+		sh:class org:Membership ;
+	] ;
+	sh:targetClass org:ChangeEvent ;
 	.
 
 sh-org:ChangeEvent-disjointWith-Organization-shape
@@ -28,6 +51,37 @@ sh-org:ChangeEvent-disjointWith-Organization-shape
 	sh:targetClass org:ChangeEvent ;
 	.
 
+sh-org:ChangeEvent-disjointWith-Role-shape
+	a sh:NodeShape ;
+	sh:message "org:ChangeEvent and org:Role are disjoint classes."@en ;
+	sh:not [
+		a sh:NodeShape ;
+		sh:class org:Role ;
+	] ;
+	sh:targetClass org:ChangeEvent ;
+	.
+
+sh-org:ChangeEvent-disjointWith-Site-shape
+	a sh:NodeShape ;
+	sh:message "org:ChangeEvent and org:Site are disjoint classes."@en ;
+	sh:not [
+		a sh:NodeShape ;
+		sh:class org:Site ;
+	] ;
+	sh:targetClass org:ChangeEvent ;
+	.
+
+sh-org:ChangeEvent-shape
+	a sh:NodeShape ;
+	rdfs:seeAlso sh-prov:Activity-shape ;
+	sh:targetClass org:ChangeEvent ;
+	.
+
+sh-org:FormalOrganization-shape
+	a sh:NodeShape ;
+	sh:targetClass org:FormalOrganization ;
+	.
+
 sh-org:Membership-disjointWith-Organization-shape
 	a sh:NodeShape ;
 	sh:message "org:Membership and org:Organization are disjoint classes."@en ;
@@ -35,6 +89,31 @@ sh-org:Membership-disjointWith-Organization-shape
 		a sh:NodeShape ;
 		sh:class org:Organization ;
 	] ;
+	sh:targetClass org:Membership ;
+	.
+
+sh-org:Membership-disjointWith-Role-shape
+	a sh:NodeShape ;
+	sh:message "org:Membership and org:Role are disjoint classes."@en ;
+	sh:not [
+		a sh:NodeShape ;
+		sh:class org:Role ;
+	] ;
+	sh:targetClass org:Membership ;
+	.
+
+sh-org:Membership-disjointWith-Site-shape
+	a sh:NodeShape ;
+	sh:message "org:Membership and org:Site are disjoint classes."@en ;
+	sh:not [
+		a sh:NodeShape ;
+		sh:class org:Site ;
+	] ;
+	sh:targetClass org:Membership ;
+	.
+
+sh-org:Membership-shape
+	a sh:NodeShape ;
 	sh:targetClass org:Membership ;
 	.
 
@@ -72,5 +151,511 @@ sh-org:Organization-equivalentClass-shape
 sh-org:Organization-shape
 	a sh:NodeShape ;
 	sh:targetClass org:Organization ;
+	.
+
+sh-org:OrganizationalCollaboration-hasMember-shape
+	a sh:PropertyShape ;
+	sh:class org:Organization ;
+	sh:path org:hasMember ;
+	.
+
+sh-org:OrganizationalCollaboration-shape
+	a sh:NodeShape ;
+	sh:property sh-org:OrganizationalCollaboration-hasMember-shape ;
+	sh:targetClass org:OrganizationalCollaboration ;
+	.
+
+sh-org:OrganizationalUnit-shape
+	a sh:NodeShape ;
+	sh:targetClass org:OrganizationalUnit ;
+	.
+
+sh-org:Post-shape
+	a sh:NodeShape ;
+	sh:targetClasss org:Post ;
+	.
+
+sh-org:Role-disjointWith-Site-shape
+	a sh:NodeShape ;
+	sh:message "org:Role and org:Site are disjoint classes."@en ;
+	sh:not [
+		a sh:NodeShape ;
+		sh:class org:Site ;
+	] ;
+	sh:targetClass org:Role ;
+	.
+
+sh-org:Role-shape
+	a sh:NodeShape ;
+	rdfs:seeAlso sh-skos:Concept-shape ;
+	sh:targetClass org:Role ;
+	.
+
+sh-org:Site-shape
+	a sh:NodeShape ;
+	sh:targetClass org:Site ;
+	.
+
+sh-org:basedAt-subjects-basedAt-shape
+	a sh:PropertyShape ;
+	sh:class org:Site ;
+	sh:path org:basedAt ;
+	.
+
+sh-org:basedAt-subjects-shape
+	a sh:NodeShape ;
+	sh:class foaf:Person ;
+	sh:property sh-org:basedAt-subjects-basedAt-shape ;
+	sh:targetSubjectsOf org:basedAt ;
+	.
+
+sh-org:changedBy-subjects-changedBy-shape
+	a sh:PropertyShape ;
+	sh:class org:ChangeEvent ;
+	sh:path org:changedBy ;
+	.
+
+sh-org:changedBy-subjects-shape
+	a sh:NodeShape ;
+	sh:class org:Organization ;
+	sh:property sh-org:changedBy-subjects-changedBy-shape ;
+	sh:targetSubjectsOf org:changedBy ;
+	.
+
+sh-org:classification-subjects-classification-shape
+	a sh:PropertyShape ;
+	sh:class skos:Concept ;
+	sh:path org:classification ;
+	.
+
+sh-org:classification-subjects-shape
+	a sh:NodeShape ;
+	sh:class org:Organization ;
+	sh:property sh-org:classification-subjects-classification-shape ;
+	sh:targetSubjectsOf org:classification ;
+	.
+
+sh-org:hasMember-subjects-hasMember-shape
+	a sh:PropertyShape ;
+	sh:class foaf:Agent ;
+	sh:path org:hasMember ;
+	.
+
+sh-org:hasMember-subjects-shape
+	a sh:NodeShape ;
+	sh:class org:Organization ;
+	sh:property sh-org:hasMember-subjects-hasMember-shape ;
+	sh:targetSubjectsOf org:hasMember ;
+	.
+
+sh-org:hasMembership-subjects-hasMembership-shape
+	a sh:PropertyShape ;
+	sh:class org:Membership ;
+	sh:path org:hasMembership ;
+	.
+
+sh-org:hasMembership-subjects-shape
+	a sh:NodeShape ;
+	sh:class foaf:Agent ;
+	sh:property sh-org:hasMembership-subjects-hasMembership-shape ;
+	sh:targetSubjectsOf org:hasMembership ;
+	.
+
+sh-org:hasPost-subjects-hasPost-shape
+	a sh:PropertyShape ;
+	sh:class org:Post ;
+	sh:path org:hasPost ;
+	.
+
+sh-org:hasPost-subjects-shape
+	a sh:NodeShape ;
+	sh:class org:Organization ;
+	sh:property sh-org:hasPost-subjects-hasPost-shape ;
+	sh:targetSubjectsOf org:hasPost ;
+	.
+
+sh-org:hasPrimarySite-subjects-hasPrimarySite-shape
+	a sh:PropertyShape ;
+	sh:class org:Site ;
+	sh:path org:hasPrimarySite ;
+	.
+
+sh-org:hasPrimarySite-subjects-shape
+	a sh:NodeShape ;
+	sh:class org:Organization ;
+	sh:property sh-org:hasPrimarySite-subjects-hasPrimarySite-shape ;
+	sh:targetSubjectsOf org:hasPrimarySite ;
+	.
+
+sh-org:hasRegisteredSite-subjects-hasRegisteredSite-shape
+	a sh:PropertyShape ;
+	sh:class org:Site ;
+	sh:path org:hasRegisteredSite ;
+	.
+
+sh-org:hasRegisteredSite-subjects-shape
+	a sh:NodeShape ;
+	sh:class org:FormalOrganization ;
+	sh:property sh-org:hasRegisteredSite-subjects-hasRegisteredSite-shape ;
+	sh:targetSubjectsOf org:hasRegisteredSite ;
+	.
+
+sh-org:hasSite-subjects-hasSite-shape
+	a sh:PropertyShape ;
+	sh:class org:Site ;
+	sh:path org:hasSite ;
+	.
+
+sh-org:hasSite-subjects-shape
+	a sh:NodeShape ;
+	sh:class org:Organization ;
+	sh:property sh-org:hasSite-subjects-hasSite-shape ;
+	sh:targetSubjectsOf org:hasSite ;
+	.
+
+sh-org:hasSubOrganization-subjects-hasSubOrganization-shape
+	a sh:PropertyShape ;
+	sh:class org:Organization ;
+	sh:path org:hasSubOrganization ;
+	.
+
+sh-org:hasSubOrganization-subjects-shape
+	a sh:NodeShape ;
+	sh:class org:Organization ;
+	sh:property sh-org:hasSubOrganization-subjects-hasSubOrganization-shape ;
+	sh:targetSubjectsOf org:hasSubOrganization ;
+	.
+
+sh-org:hasUnit-subjects-hasUnit-shape
+	a sh:PropertyShape ;
+	sh:class org:OrganizationalUnit ;
+	sh:path org:hasUnit ;
+	.
+
+sh-org:hasUnit-subjects-shape
+	a sh:NodeShape ;
+	sh:class org:FormalOrganization ;
+	sh:property sh-org:hasUnit-subjects-hasUnit-shape ;
+	sh:targetSubjectsOf org:hasUnit ;
+	.
+
+sh-org:headOf-subjects-headOf-shape
+	a sh:PropertyShape ;
+	sh:class org:Organization ;
+	sh:path org:headOf ;
+	.
+
+sh-org:headOf-subjects-shape
+	a sh:NodeShape ;
+	sh:class foaf:Agent ;
+	sh:property sh-org:headOf-subjects-headOf-shape ;
+	sh:targetSubjectsOf org:headOf ;
+	.
+
+sh-org:heldBy-subjects-heldBy-shape
+	a sh:PropertyShape ;
+	sh:class foaf:Agent ;
+	sh:path org:heldBy ;
+	.
+
+sh-org:heldBy-subjects-shape
+	a sh:NodeShape ;
+	sh:class org:Post ;
+	sh:property sh-org:heldBy-subjects-heldBy-shape ;
+	sh:targetSubjectsOf org:heldBy ;
+	.
+
+sh-org:holds-subjects-holds-shape
+	a sh:PropertyShape ;
+	sh:class org:Post ;
+	sh:path org:holds ;
+	.
+
+sh-org:holds-subjects-shape
+	a sh:NodeShape ;
+	sh:class foaf:Agent ;
+	sh:property sh-org:holds-subjects-holds-shape ;
+	sh:targetSubjectsOf org:holds ;
+	.
+
+sh-org:identifier-subjects-identifier-shape
+	a sh:PropertyShape ;
+	sh:nodeKind sh:Literal ;
+	sh:path org:identifier ;
+	.
+
+sh-org:identifier-subjects-shape
+	a sh:NodeShape ;
+	rdfs:seeAlso sh-skos:notation-subjects-shape ;
+	sh:class org:Organization ;
+	sh:property sh-org:identifier-subjects-identifier-shape ;
+	sh:targetSubjectsOf org:identifier ;
+	.
+
+sh-org:linkedTo-subjects-linkedTo-shape
+	a sh:PropertyShape ;
+	sh:class org:Organization ;
+	sh:path org:linkedTo ;
+	.
+
+sh-org:linkedTo-subjects-shape
+	a sh:NodeShape ;
+	sh:class org:Organization ;
+	sh:property sh-org:linkedTo-subjects-linkedTo-shape ;
+	sh:targetSubjectsOf org:linkedTo ;
+	.
+
+sh-org:location-subjects-location-shape
+	a sh:PropertyShape ;
+	sh:datatype xsd:string ;
+	sh:path org:location ;
+	.
+
+sh-org:location-subjects-shape
+	a sh:NodeShape ;
+	sh:class foaf:Person ;
+	sh:property sh-org:location-subjects-location-shape ;
+	sh:targetSubjectsOf org:location ;
+	.
+
+sh-org:member-subjects-member-shape
+	a sh:PropertyShape ;
+	sh:class foaf:Agent ;
+	sh:path org:member ;
+	.
+
+sh-org:member-subjects-shape
+	a sh:NodeShape ;
+	sh:class org:Membership ;
+	sh:property sh-org:member-subjects-member-shape ;
+	sh:targetSubjectsOf org:member ;
+	.
+
+sh-org:memberDuring-subjects-memberDuring-shape
+	a sh:PropertyShape ;
+	sh:nodeKind sh:BlankNodeOrIRI ;
+	sh:path org:memberDuring ;
+	.
+
+sh-org:memberDuring-subjects-shape
+	a sh:NodeShape ;
+	sh:class org:Membership ;
+	sh:property sh-org:memberDuring-subjects-memberDuring-shape ;
+	sh:targetSubjectsOf org:memberDuring ;
+	.
+
+sh-org:memberOf-subjects-memberOf-shape
+	a sh:PropertyShape ;
+	sh:class org:Organization ;
+	sh:path org:memberOf ;
+	.
+
+sh-org:memberOf-subjects-shape
+	a sh:NodeShape ;
+	sh:class foaf:Agent ;
+	sh:property sh-org:memberOf-subjects-memberOf-shape ;
+	sh:targetSubjectsOf org:memberOf ;
+	.
+
+sh-org:organization-subjects-organization-shape
+	a sh:PropertyShape ;
+	sh:class org:Organization ;
+	sh:path org:organization ;
+	.
+
+sh-org:organization-subjects-shape
+	a sh:NodeShape ;
+	sh:class org:Membership ;
+	sh:property sh-org:organization-subjects-organization-shape ;
+	sh:targetSubjectsOf org:organization ;
+	.
+
+sh-org:originalOrganization-subjects-originalOrganization-shape
+	a sh:PropertyShape ;
+	sh:class org:Organization ;
+	sh:path org:originalOrganization ;
+	.
+
+sh-org:originalOrganization-subjects-shape
+	a sh:NodeShape ;
+	rdfs:seeAlso sh-prov:used-subjects-shape ;
+	sh:class org:ChangeEvent ;
+	sh:property sh-org:originalOrganization-subjects-originalOrganization-shape ;
+	sh:targetSubjectsOf org:originalOrganization ;
+	.
+
+sh-org:postIn-subjects-postIn-shape
+	a sh:PropertyShape ;
+	sh:class org:Organization ;
+	sh:path org:postIn ;
+	.
+
+sh-org:postIn-subjects-shape
+	a sh:NodeShape ;
+	sh:class org:Post ;
+	sh:property sh-org:postIn-subjects-postIn-shape ;
+	sh:targetSubjectsOf org:postIn ;
+	.
+
+sh-org:purpose-subjects-shape
+	a sh:NodeShape ;
+	sh:class org:Organization ;
+	sh:targetSubjectsOf org:purpose ;
+	.
+
+sh-org:remuneration-subjects-shape
+	a sh:NodeShape ;
+	sh:class org:Role ;
+	sh:targetSubjectsOf org:remuneration ;
+	.
+
+sh-org:reportsTo-subjects-reportsTo-shape
+	a sh:PropertyShape ;
+	sh:or (
+		[
+			a sh:NodeShape ;
+			sh:class foaf:Agent ;
+		]
+		[
+			a sh:NodeShape ;
+			sh:class org:Post ;
+		]
+	) ;
+	sh:path org:reportsTo ;
+	.
+
+sh-org:reportsTo-subjects-shape
+	a sh:NodeShape ;
+	sh:or (
+		[
+			a sh:NodeShape ;
+			sh:class foaf:Agent ;
+		]
+		[
+			a sh:NodeShape ;
+			sh:class org:Post ;
+		]
+	) ;
+	sh:property sh-org:reportsTo-subjects-reportsTo-shape ;
+	sh:targetSubjectsOf org:reportsTo ;
+	.
+
+sh-org:resultedFrom-subjects-resultedFrom-shape
+	a sh:PropertyShape ;
+	sh:class org:ChangeEvent ;
+	sh:path org:resultedFrom ;
+	.
+
+sh-org:resultedFrom-subjects-shape
+	a sh:NodeShape ;
+	sh:class org:Organization ;
+	sh:property sh-org:resultedFrom-subjects-resultedFrom-shape ;
+	sh:targetSubjectsOf org:resultedFrom ;
+	.
+
+sh-org:resultingOrganization-subjects-resultingOrganization-shape
+	a sh:PropertyShape ;
+	sh:class org:Organization ;
+	sh:path org:resultingOrganization ;
+	.
+
+sh-org:resultingOrganization-subjects-shape
+	a sh:NodeShape ;
+	sh:class org:ChangeEvent ;
+	sh:property sh-org:resultingOrganization-subjects-resultingOrganization-shape ;
+	sh:targetSubjectsOf org:resultingOrganization ;
+	.
+
+sh-org:role-subjects-role-shape
+	a sh:PropertyShape ;
+	sh:class org:Role ;
+	sh:path org:role ;
+	.
+
+sh-org:role-subjects-shape
+	a sh:NodeShape ;
+	sh:or (
+		[
+			a sh:NodeShape ;
+			sh:class org:Membership ;
+		]
+		[
+			a sh:NodeShape ;
+			sh:class org:Post ;
+		]
+	) ;
+	sh:property sh-org:role-subjects-role-shape ;
+	sh:targetSubjectsOf org:role ;
+	.
+
+sh-org:roleProperty-subjects-roleProperty-shape
+	a sh:PropertyShape ;
+	sh:class rdf:Property ;
+	sh:path org:roleProperty ;
+	.
+
+sh-org:roleProperty-subjects-shape
+	a sh:NodeShape ;
+	sh:class org:Role ;
+	sh:property sh-org:roleProperty-subjects-roleProperty-shape ;
+	sh:targetSubjectsOf org:roleProperty ;
+	.
+
+sh-org:siteAddress-subjects-shape
+	a sh:NodeShape ;
+	sh:class org:Site ;
+	sh:targetSubjectsOf org:siteAddress ;
+	.
+
+sh-org:siteOf-subjects-shape
+	a sh:NodeShape ;
+	sh:class org:Site ;
+	sh:property sh-org:siteOf-subjects-siteOf-shape ;
+	sh:targetSubjectsOf org:siteOf ;
+	.
+
+sh-org:siteOf-subjects-siteOf-shape
+	a sh:PropertyShape ;
+	sh:class org:Organization ;
+	sh:path org:siteOf ;
+	.
+
+sh-org:subOrganizationOf-subjects-shape
+	a sh:NodeShape ;
+	sh:class org:Organization ;
+	sh:property sh-org:subOrganizationOf-subjects-subOrganizationOf-shape ;
+	sh:targetSubjectsOf org:subOrganizationOf ;
+	.
+
+sh-org:subOrganizationOf-subjects-subOrganizationOf-shape
+	a sh:PropertyShape ;
+	sh:class org:Organization ;
+	sh:path org:subOrganizationOf ;
+	.
+
+sh-org:transitiveSubOrganizationOf-subjects-shape
+	a sh:NodeShape ;
+	sh:class org:Organization ;
+	sh:property sh-org:transitiveSubOrganizationOf-subjects-transitiveSubOrganizationOf-shape ;
+	sh:targetSubjectsOf org:transitiveSubOrganizationOf ;
+	.
+
+sh-org:transitiveSubOrganizationOf-subjects-transitiveSubOrganizationOf-shape
+	a sh:PropertyShape ;
+	sh:class org:Organization ;
+	sh:path org:transitiveSubOrganizationOf ;
+	.
+
+sh-org:unitOf-subjects-shape
+	a sh:NodeShape ;
+	sh:class org:OrganizationalUnit ;
+	sh:property sh-org:unitOf-subjects-unitOf-shape ;
+	sh:targetSubjectsOf org:unitOf ;
+	.
+
+sh-org:unitOf-subjects-unitOf-shape
+	a sh:PropertyShape ;
+	sh:class org:FormalOrganization ;
+	sh:path org:unitOf ;
 	.
 

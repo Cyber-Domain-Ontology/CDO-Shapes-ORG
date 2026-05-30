@@ -2,12 +2,15 @@
 
 @prefix drafting: <http://example.org/ontology/drafting/> .
 @prefix ex: <http://example.org/ontology/example/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix gr: <http://purl.org/goodrelations/v1#> .
 @prefix kb: <http://example.org/kb/> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sh-org: <http://example.org/shapes/org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://example.org/kb>
@@ -16,9 +19,124 @@
 	owl:imports <http://example.org/shapes/sh-org> ;
 	.
 
+kb:Agent-22d5d403-8720-425a-91aa-71f43a25d75f
+	a foaf:Agent ;
+	rdfs:seeAlso sh-org:member-subjects-member-shape ;
+	.
+
+kb:Agent-56c59871-d9e9-42a7-9037-17987f5e80fd
+	a foaf:Agent ;
+	rdfs:seeAlso sh-org:hasMember-subjects-hasMember-shape ;
+	.
+
+kb:Agent-944c0ca3-2e99-4f69-9746-7efd3e700721
+	a foaf:Agent ;
+	rdfs:seeAlso sh-org:heldBy-subjects-heldBy-shape ;
+	.
+
+kb:Agent-a566fd13-4812-4138-89d0-2a83e035ec60
+	a foaf:Agent ;
+	rdfs:seeAlso sh-org:reportsTo-subjects-reportsTo-shape ;
+	.
+
+kb:Agent-b484c997-e11c-48c9-8d17-d757fde94ecb
+	a foaf:Agent ;
+	rdfs:seeAlso sh-org:hasMembership-subjects-shape ;
+	org:hasMembership kb:Membership-b6db70d7-ab76-49d7-92c7-83ce2085437c ;
+	.
+
+kb:Agent-bae2ab7a-652c-4713-9c43-60ff881bbc9a
+	a foaf:Agent ;
+	rdfs:seeAlso sh-org:headOf-subjects-shape ;
+	org:headOf kb:Organization-bd8490e9-bd78-4187-97cf-b66ed28a0b5d ;
+	.
+
+kb:Agent-bd8a9053-4528-4ee4-8aca-c5797ce26e3e
+	a foaf:Agent ;
+	rdfs:seeAlso sh-org:holds-subjects-shape ;
+	org:holds kb:Post-be5aff54-a33a-4536-bbae-aac2033dc2c9 ;
+	.
+
+kb:Agent-befae91c-d5a0-4260-8f8d-cbb107064f42
+	a foaf:Agent ;
+	rdfs:seeAlso sh-org:memberOf-subjects-shape ;
+	org:memberOf kb:Organization-bf79eb9a-14a4-4fc0-8635-32013085658b ;
+	.
+
+kb:Agent-bff90b92-13dc-45aa-a31f-fd0bd4c20d11
+	a foaf:Agent ;
+	rdfs:seeAlso sh-org:reportsTo-subjects-shape ;
+	org:reportsTo kb:Agent-c1cce9d7-08d2-4e67-963a-408f93d7e82c ;
+	.
+
+kb:Agent-c1cce9d7-08d2-4e67-963a-408f93d7e82c
+	a foaf:Agent ;
+	rdfs:seeAlso sh-org:reportsTo-subjects-reportsTo-shape ;
+	.
+
+kb:Agent-c3c6939d-2bda-470c-8cdb-12214048f914
+	a foaf:Agent ;
+	rdfs:seeAlso sh-org:reportsTo-subjects-shape ;
+	org:reportsTo kb:Post-c3d06721-4f3b-4e1c-bbcf-6acc340d5765 ;
+	.
+
+kb:BusinessEntity-b5295586-33f5-4c8c-be4f-09b4aaa4e22c
+	a gr:BusinessEntity ;
+	rdfs:seeAlso sh-org:BusinessEntity-shape ;
+	.
+
+kb:ChangeEvent-0385484a-d6ac-455d-8f56-c27d3e59e696
+	a org:ChangeEvent ;
+	rdfs:seeAlso sh-org:originalOrganization-subjects-shape ;
+	org:originalOrganization org:Organization-04564708-875b-49b0-851c-9135b27c177d ;
+	.
+
+kb:ChangeEvent-0702bb37-aaf6-4f31-9526-3251cc01dc84
+	a org:ChangeEvent ;
+	rdfs:seeAlso sh-org:resultingOrganization-subjects-shape ;
+	org:resultingOrganization kb:Organization-098414e6-7283-4676-958c-e3552f4b6129 ;
+	.
+
 kb:ChangeEvent-1a6c6f6b-3307-4ca5-a994-9b0a401ceec1
 	a org:ChangeEvent ;
 	rdfs:seeAlso sh-org:ChangeEvent-disjointWith-Organization-shape ;
+	.
+
+kb:ChangeEvent-3cfda304-074a-4bda-9485-3c9043f2f206
+	a org:ChangeEvent ;
+	rdfs:seeAlso sh-org:changedBy-subjects-changedBy-shape ;
+	.
+
+kb:ChangeEvent-7f564f8b-c8eb-4c75-86fb-be793b1cbf8b
+	a org:ChangeEvent ;
+	rdfs:seeAlso sh-org:resultedFrom-subjects-resultedFrom-shape ;
+	.
+
+kb:Concept-5359a345-7691-4080-b6ea-d51c6741d0f6
+	a skos:Concept ;
+	rdfs:seeAlso sh-org:classification-subjects-classification-shape ;
+	.
+
+kb:FormalOrganization-0bc7e3f7-f559-4a58-87d9-ffb401159bfc
+	a org:FormalOrganization ;
+	rdfs:seeAlso sh-org:hasRegisteredSite-subjects-shape ;
+	org:hasRegisteredSite kb:Site-0c772caf-56d8-4fce-80d5-99ca9af020a5 ;
+	.
+
+kb:FormalOrganization-189a1a60-9b61-4532-8f98-80768f3758be
+	a org:FormalOrganization ;
+	rdfs:seeAlso sh-org:hasUnit-subjects-shape ;
+	org:hasUnit kb:OrganizationalUnit-1df29b3f-29c9-432e-8c5b-e1d0d08c0275 ;
+	.
+
+kb:FormalOrganization-3c36845f-adf7-42cb-a913-1f763f496ec9
+	a org:FormalOrganization ;
+	rdfs:seeAlso sh-org:FormalOrganization-shape ;
+	.
+
+kb:FormalOrganization-8e5f3b73-a9cf-46e4-9928-a313239f7d92
+	a org:FormalOrganization ;
+	rdfs:seeAlso sh-org:unitOf-subjects-unitOf-shape ;
 	.
 
 kb:Membership-1d9fdc4a-edfb-48bd-8c4e-dcf57f5eb3fd
@@ -26,11 +144,326 @@ kb:Membership-1d9fdc4a-edfb-48bd-8c4e-dcf57f5eb3fd
 	rdfs:seeAlso sh-org:Membership-disjointWith-Organization-shape ;
 	.
 
+kb:Membership-20f4de32-3998-4ccf-b036-ab3aab8c6ca6
+	a org:Membership ;
+	rdfs:seeAlso sh-org:member-subjects-shape ;
+	org:member kb:Agent-22d5d403-8720-425a-91aa-71f43a25d75f ;
+	.
+
+kb:Membership-2366b519-0ece-4054-a560-34388b57a347
+	a org:Membership ;
+	rdfs:seeAlso sh-org:memberDuring-subjects-shape ;
+	org:memberDuring kb:Thing-2444d468-dbcb-4956-8f49-a6ef0bb0f98b ;
+	.
+
+kb:Membership-2496bf2b-aee9-42ee-9f53-aedea86eabe9
+	a org:Membership ;
+	rdfs:seeAlso sh-org:organization-subjects-shape ;
+	org:organization kb:Organization-2ae360ce-4668-4733-a07a-42239c0b0b61 ;
+	.
+
+kb:Membership-2dce28b9-ff55-440b-97c0-e5c9a6dda35a
+	a org:Membership ;
+	rdfs:seeAlso sh-org:role-subjects-shape ;
+	org:role kb:Role-30be1b9a-eb54-4771-9651-7c731a9eecbf ;
+	.
+
+kb:Membership-b6db70d7-ab76-49d7-92c7-83ce2085437c
+	a org:Membership ;
+	rdfs:seeAlso sh-org:hasMembership-subjects-hasMembership-shape ;
+	.
+
+kb:Organization-098414e6-7283-4676-958c-e3552f4b6129
+	a org:Organization ;
+	rdfs:seeAlso sh-org:resultingOrganization-subjects-resultingOrganization-shape ;
+	.
+
+kb:Organization-2ae360ce-4668-4733-a07a-42239c0b0b61
+	a org:Organization ;
+	rdfs:seeAlso sh-org:organization-subjects-organization-shape ;
+	.
+
+kb:Organization-34dfacd6-5957-47f3-8297-475b1c9dbd81
+	a org:Organization ;
+	rdfs:seeAlso sh-org:changedBy-subjects-shape ;
+	org:changedBy kb:ChangeEvent-3cfda304-074a-4bda-9485-3c9043f2f206 ;
+	.
+
 kb:Organization-38a41943-9b82-403a-af95-bc410130d54e
 	a org:Organization ;
-	rdfs:seeAlso
-		sh-org:Organization-disjointWith-Site-shape ,
-		sh-org:Organization-shape
-		;
+	rdfs:seeAlso sh-org:Organization-shape ;
+	.
+
+kb:Organization-3fad8f2d-4bf7-4a3a-8db7-6b9426efdcfc
+	a org:Organization ;
+	rdfs:seeAlso sh-org:classification-subjects-shape ;
+	org:classification kb:Concept-5359a345-7691-4080-b6ea-d51c6741d0f6 ;
+	.
+
+kb:Organization-4d5bc7f7-79d3-408d-8e93-6444ed642bd0
+	a org:Organization ;
+	rdfs:seeAlso sh-org:identifier-subjects-shape ;
+	org:identifier "" ;
+	.
+
+kb:Organization-56804574-2083-43ed-954a-fda699d6c6d2
+	a org:Organization ;
+	rdfs:seeAlso sh-org:hasMember-subjects-shape ;
+	org:hasMember kb:Agent-56c59871-d9e9-42a7-9037-17987f5e80fd ;
+	.
+
+kb:Organization-5bf2706f-d941-43ef-a3c1-1a110f6ec167
+	a org:Organization ;
+	rdfs:seeAlso sh-org:hasPost-subjects-shape ;
+	org:hasPost kb:Post-5d647ce4-fefc-41e0-8ae2-377b696ef41b ;
+	.
+
+kb:Organization-638b5b8d-8f97-4145-87ae-8022d7099113
+	a org:Organization ;
+	rdfs:seeAlso sh-org:hasPrimarySite-subjects-shape ;
+	org:hasPrimarySite kb:Site-65dc8f45-9b3a-4cf0-8f0f-acb2e1393e03 ;
+	.
+
+kb:Organization-65dc8f45-9b3a-4cf0-8f0f-acb2e1393e03
+	a org:Organization ;
+	rdfs:seeAlso sh-org:hasSite-subjects-shape ;
+	org:hasSite kb:Site-6c10d2cc-31bb-47f9-906a-4edd879b5804 ;
+	.
+
+kb:Organization-72e0bf5e-3d79-417d-8830-7422038aa154
+	a org:Organization ;
+	rdfs:seeAlso sh-org:hasSubOrganization-subjects-shape ;
+	org:hasSubOrganization kb:Organization-74ef6ba8-67f2-41c6-8b61-022b3be154dc ;
+	.
+
+kb:Organization-74ef6ba8-67f2-41c6-8b61-022b3be154dc
+	a org:Organization ;
+	rdfs:seeAlso sh-org:hasSubOrganization-subjects-hasSubOrganization-shape ;
+	.
+
+kb:Organization-765739b0-d0d9-48d9-ae7b-45b40df33ecc
+	a org:Organization ;
+	rdfs:seeAlso sh-org:linkedTo-subjects-shape ;
+	org:linkedTo kb:Organization-767e76ff-f4f6-41ea-8e8a-fcfded3a0d48 ;
+	.
+
+kb:Organization-767e76ff-f4f6-41ea-8e8a-fcfded3a0d48
+	a org:Organization ;
+	rdfs:seeAlso sh-org:linkedTo-subjects-linkedTo-shape ;
+	.
+
+kb:Organization-770fdb38-9517-480f-9750-2817fed9c629
+	a org:Organization ;
+	rdfs:seeAlso sh-org:purpose-subjects-shape ;
+	org:purpose kb:Thing-797ba26a-1063-4eed-9cd7-4abd2f2628e5 ;
+	.
+
+kb:Organization-7c47eb49-3c48-4b74-a8fc-a7b9d024b324
+	a org:Organization ;
+	rdfs:seeAlso sh-org:resultedFrom-subjects-shape ;
+	org:resultedFrom kb:ChangeEvent-7f564f8b-c8eb-4c75-86fb-be793b1cbf8b ;
+	.
+
+kb:Organization-8229fcaa-d613-4f4a-ae32-adec7c213e3f
+	a org:Organization ;
+	rdfs:seeAlso sh-org:subOrganizationOf-subjects-shape ;
+	org:subOrganizationOf kb:Organization-853ce17e-7b36-4275-889a-3bc8b0b0c6d1 ;
+	.
+
+kb:Organization-853ce17e-7b36-4275-889a-3bc8b0b0c6d1
+	a org:Organization ;
+	rdfs:seeAlso sh-org:subOrganizationOf-subjects-subOrganizationOf-shape ;
+	.
+
+kb:Organization-85609e29-3f3b-4324-8be3-80d740b26bc0
+	a org:Organization ;
+	rdfs:seeAlso sh-org:transitiveSubOrganizationOf-subjects-shape ;
+	org:transitiveSubOrganizationOf kb:Organization-8a7b700e-2e6c-4784-8ce8-71d272fdb234 ;
+	.
+
+kb:Organization-8a7b700e-2e6c-4784-8ce8-71d272fdb234
+	a org:Organization ;
+	rdfs:seeAlso sh-org:transitiveSubOrganizationOf-subjects-transitiveSubOrganizationOf-shape ;
+	.
+
+kb:Organization-9ed166ce-b9de-4534-bc90-6e231cfcf6d7
+	a org:Organization ;
+	rdfs:seeAlso sh-org:postIn-subjects-postIn-shape ;
+	.
+
+kb:Organization-b350d156-a38a-4792-b563-b7a1e4e4ff6d
+	a org:Organization ;
+	rdfs:seeAlso sh-org:siteOf-subjects-siteOf-shape ;
+	.
+
+kb:Organization-bd8490e9-bd78-4187-97cf-b66ed28a0b5d
+	a org:Organization ;
+	rdfs:seeAlso sh-org:headOf-subjects-headOf-shape ;
+	.
+
+kb:Organization-bf79eb9a-14a4-4fc0-8635-32013085658b
+	a org:Organization ;
+	rdfs:seeAlso sh-org:memberOf-subjects-memberOf-shape ;
+	.
+
+kb:OrganizationalCollaboration-9292eadc-2bc4-42b6-8526-77e38fc31453
+	a org:OrganizationalCollaboration ;
+	rdfs:seeAlso sh-org:OrganizationalCollaboration-shape ;
+	.
+
+kb:OrganizationalUnit-1df29b3f-29c9-432e-8c5b-e1d0d08c0275
+	a org:OrganizationalUnit ;
+	rdfs:seeAlso sh-org:hasUnit-subjects-hasUnit-shape ;
+	.
+
+kb:OrganizationalUnit-8b57d15b-0070-4670-a578-99427a10d86c
+	a org:OrganizationalUnit ;
+	rdfs:seeAlso sh-org:unitOf-subjects-shape ;
+	org:unitOf kb:FormalOrganization-8e5f3b73-a9cf-46e4-9928-a313239f7d92 ;
+	.
+
+kb:OrganizationalUnit-ff2db6ec-d2f1-4abb-8bfa-e4a949a6a167
+	a org:OrganizationalUnit ;
+	rdfs:seeAlso sh-org:OrganizationalUnit-shape ;
+	.
+
+kb:Person-c461ecb5-2582-4aa2-8605-4b6c13ada194
+	a foaf:Person ;
+	rdfs:seeAlso sh-org:basedAt-subjects-shape ;
+	org:basedAt kb:Site-c5333392-5c71-492b-8f38-c81b0798a0b1 ;
+	.
+
+kb:Person-c5feae67-060c-4b8d-b1b0-7da1d9a5dc95
+	a foaf:Person ;
+	rdfs:seeAlso sh-org:location-subjects-shape ;
+	org:location "" ;
+	.
+
+kb:Post-5d647ce4-fefc-41e0-8ae2-377b696ef41b
+	a org:Post ;
+	rdfs:seeAlso sh-org:hasPost-subjects-hasPost-shape ;
+	.
+
+kb:Post-90fd2b62-6506-4485-8310-3bbe81114477
+	a org:Post ;
+	rdfs:seeAlso sh-org:heldBy-subjects-shape ;
+	org:heldBy kb:Agent-944c0ca3-2e99-4f69-9746-7efd3e700721 ;
+	.
+
+kb:Post-95e741a4-eba1-411b-8bea-c77d9d2578b9
+	a org:Post ;
+	rdfs:seeAlso sh-org:postIn-subjects-shape ;
+	org:postIn kb:Organization-9ed166ce-b9de-4534-bc90-6e231cfcf6d7 ;
+	.
+
+kb:Post-a1577cee-b8a6-42a1-86c9-411da07cdbe3
+	a org:Post ;
+	rdfs:seeAlso sh-org:reportsTo-subjects-shape ;
+	org:reportsTo kb:Post-a3845fba-3286-4fd2-a333-e1791686d87a ;
+	.
+
+kb:Post-a3845fba-3286-4fd2-a333-e1791686d87a
+	a org:Post ;
+	rdfs:seeAlso sh-org:reportsTo-subjects-reportsTo-shape ;
+	.
+
+kb:Post-a4b0fde6-5b13-464a-b9de-8165f2d295fb
+	a org:Post ;
+	rdfs:seeAlso sh-org:reportsTo-subjects-shape ;
+	org:reportsTo kb:Agent-a566fd13-4812-4138-89d0-2a83e035ec60 ;
+	.
+
+kb:Post-a8ae5094-4d3f-4d59-ab6f-0f49752c7ea1
+	a org:Post ;
+	rdfs:seeAlso sh-org:role-subjects-shape ;
+	org:role kb:Role-ae0fba50-5f2a-480b-a14c-c55094f9a259 ;
+	.
+
+kb:Post-be5aff54-a33a-4536-bbae-aac2033dc2c9
+	a org:Post ;
+	rdfs:seeAlso sh-org:holds-subjects-holds-shape ;
+	.
+
+kb:Post-c3d06721-4f3b-4e1c-bbcf-6acc340d5765
+	a org:Post ;
+	rdfs:seeAlso sh-org:reportsTo-subjects-reportsTo-shape ;
+	.
+
+kb:Role-30be1b9a-eb54-4771-9651-7c731a9eecbf
+	a org:Role ;
+	rdfs:seeAlso sh-org:role-subjects-role-shape ;
+	.
+
+kb:Role-ae0fba50-5f2a-480b-a14c-c55094f9a259
+	a org:Role ;
+	rdfs:seeAlso sh-org:role-subjects-role-shape ;
+	.
+
+kb:Role-aeca1eab-1f4d-47a5-a9b3-d13514a10adc
+	a org:Role ;
+	rdfs:seeAlso sh-org:remuneration-subjects-shape ;
+	org:remuneration kb:Thing-aee7b1b8-72ff-492f-bca6-32bfb4a92546 ;
+	.
+
+kb:Site-0c772caf-56d8-4fce-80d5-99ca9af020a5
+	a org:Site ;
+	rdfs:seeAlso sh-org:hasRegisteredSite-subjects-hasRegisteredSite-shape ;
+	.
+
+kb:Site-65dc8f45-9b3a-4cf0-8f0f-acb2e1393e03
+	a org:Site ;
+	rdfs:seeAlso sh-org:hasPrimarySite-subjects-hasPrimarySite-shape ;
+	.
+
+kb:Site-6c10d2cc-31bb-47f9-906a-4edd879b5804
+	a org:Site ;
+	rdfs:seeAlso sh-org:hasSite-subjects-hasSite-shape ;
+	.
+
+kb:Site-af499420-2083-4d3f-a3ce-1ccccba4f77d
+	a org:Site ;
+	rdfs:seeAlso sh-org:siteAddress-subjects-shape ;
+	org:siteAddress kb:Thing-e06ce54c-5db5-4a71-82de-9f10db5c2431 ;
+	.
+
+kb:Site-aff5fa40-1190-4508-bdc1-44ffaffc4ee8
+	a org:Site ;
+	rdfs:seeAlso sh-org:siteOf-subjects-shape ;
+	org:siteOf kb:Organization-b350d156-a38a-4792-b563-b7a1e4e4ff6d ;
+	.
+
+kb:Site-c5333392-5c71-492b-8f38-c81b0798a0b1
+	a org:Site ;
+	rdfs:seeAlso sh-org:basedAt-subjects-basedAt-shape ;
+	.
+
+kb:Site-e5ce81bb-4153-46bb-852b-c77164bf1651
+	a org:Site ;
+	rdfs:seeAlso sh-org:Site-shape ;
+	.
+
+kb:Thing-2444d468-dbcb-4956-8f49-a6ef0bb0f98b
+	a owl:Thing ;
+	rdfs:seeAlso sh-org:memberDuring-subjects-shape ;
+	.
+
+kb:Thing-797ba26a-1063-4eed-9cd7-4abd2f2628e5
+	a owl:Thing ;
+	rdfs:seeAlso sh-org:purpose-subjects-shape ;
+	.
+
+kb:Thing-aee7b1b8-72ff-492f-bca6-32bfb4a92546
+	a owl:Thing ;
+	rdfs:seeAlso sh-org:remuneration-subjects-shape ;
+	.
+
+kb:Thing-e06ce54c-5db5-4a71-82de-9f10db5c2431
+	a owl:Thing ;
+	rdfs:seeAlso sh-org:siteAddress-subjects-shape ;
+	.
+
+org:Organization-04564708-875b-49b0-851c-9135b27c177d
+	a org:Organization ;
+	rdfs:seeAlso sh-org:originalOrganization-subjects-originalOrganization-shape ;
 	.
 

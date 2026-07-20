@@ -29,6 +29,8 @@ uco_srcdir := $(top_srcdir)/dependencies/CDO-Shapes-FOAF/dependencies/UCO
 # ../ontology/generated-dependencies.ttl.
 generated_dependencies_ttls := \
   $(top_srcdir)/dependencies/CDO-Shapes-FOAF/shapes/sh-foaf.ttl \
+  $(top_srcdir)/dependencies/CDO-Shapes-PROV-O/shapes/sh-prov-o.ttl \
+  $(top_srcdir)/dependencies/CDO-Shapes-SKOS/shapes/sh-skos.ttl \
   $(sh_owl_srcdir)/shapes/sh-owl.ttl
 
 ttl_basenames := $(wildcard sh-*.ttl)

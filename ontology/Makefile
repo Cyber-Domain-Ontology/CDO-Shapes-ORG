@@ -21,6 +21,7 @@ top_srcdir := $(shell cd .. ; pwd)
 generated_dependencies_ttls := \
   $(top_srcdir)/dependencies/CDO-Shapes-FOAF/dependencies/formatted-foaf.ttl \
   $(top_srcdir)/dependencies/CDO-Shapes-PROV-O/dependencies/prov-o-dl.ttl \
+  $(top_srcdir)/dependencies/CDO-Shapes-PROV-O/ontology/cdo-prov-o.ttl \
   $(top_srcdir)/dependencies/CDO-Shapes-SKOS/dependencies/formatted-skos.ttl \
   $(top_srcdir)/dependencies/formatted-org.ttl
 

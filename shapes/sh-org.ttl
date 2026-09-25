@@ -1,7 +1,7 @@
 # imports: http://example.org/shapes/sh-foaf
 # imports: http://example.org/shapes/sh-prov-o
-# imports: http://example.org/shapes/sh-skos
 # imports: http://www.w3.org/ns/org#
+# imports: https://shapes.cyberdomainontology.org/shapes/sh-skos/0.1.0
 
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix gr: <http://purl.org/goodrelations/v1#> .
@@ -12,7 +12,7 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix sh-org: <http://example.org/shapes/org/> .
 @prefix sh-prov: <http://example.org/shapes/prov/> .
-@prefix sh-skos: <http://example.org/shapes/skos/> .
+@prefix sh-skos: <https://shapes.cyberdomainontology.org/shapes/sh-skos/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -21,8 +21,8 @@
 	owl:imports
 		<http://example.org/shapes/sh-foaf> ,
 		<http://example.org/shapes/sh-prov-o> ,
-		<http://example.org/shapes/sh-skos> ,
-		<http://www.w3.org/ns/org#>
+		<http://www.w3.org/ns/org#> ,
+		sh-skos:0.1.0
 		;
 	.
 

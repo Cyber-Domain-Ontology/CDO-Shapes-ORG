@@ -226,7 +226,7 @@ kb:Organization-638b5b8d-8f97-4145-87ae-8022d7099113
 	org:hasPrimarySite kb:Site-65dc8f45-9b3a-4cf0-8f0f-acb2e1393e03 ;
 	.
 
-kb:Organization-65dc8f45-9b3a-4cf0-8f0f-acb2e1393e03
+kb:Organization-70a960a4-0262-4f31-9cb5-1dc8a0ff97cc
 	a org:Organization ;
 	rdfs:seeAlso sh-org:hasSite-subjects-shape ;
 	org:hasSite kb:Site-6c10d2cc-31bb-47f9-906a-4edd879b5804 ;
